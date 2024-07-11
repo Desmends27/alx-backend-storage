@@ -11,17 +11,13 @@ BEGIN
     DECLARE average FLOAT;
 
     -- Calculate sum of scores and count of corrections for the user
-    SELECT SUM(score), COUNT(*) INTO sum_scores, num_corrections FROM corrections WHERE user_id = user_id;
-
-    -- Calculate average score
-    IF num_corrections > 0 THEN
-        SET average = sum_scores / num_corrections;
-    ELSE
-        SET average = 0;  -- Handle division by zero case
-    END IF;
+    SELECT SUM(score) INTO sum_scores FROM corrections WHERE user_id = user_id;
 
     -- Update users table with the calculated average score
-    UPDATE users SET average_score = average WHERE id = user_id;
+    UPDATE users SET
+	average_score = sum_scores / (SELECT COUNT(score) FROM corrections WHERE user_id = users_id)
+
+	WHERE id = user_id
 
 END $$
 
