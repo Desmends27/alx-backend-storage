@@ -1,5 +1,5 @@
 -- Creates a procedure ComputeAverageScoreForUser
--- Stores the average store as in student
+-- Stores the average score as in student
 DELIMITER $$
 
 CREATE PROCEDURE ComputeAverageScoreForUser(
