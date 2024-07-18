@@ -5,6 +5,7 @@ import redis
 from typing import Union, Callable, Optional, Any
 from functools import wraps
 
+
 def call_history(method: Callable) -> Callable:
     """ Add input parameters to redis everytime its called"""
     method_key = method.__qualname__
@@ -17,6 +18,7 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(outputs, str(res))
         return res
     retur wrapper
+
 
 def count_calls(method: Callable) -> Callable:
     """ Returns the function increments everytime the funcion is called"""
@@ -39,6 +41,7 @@ class Cache:
         """ stores an instance of a redis client"""
         self._redis = redis.Redis()
         self._redis.flushdb()
+
     @call_history
     @count_calls
     def store(self, data: Union[int, str, bytes, float]) -> str:
