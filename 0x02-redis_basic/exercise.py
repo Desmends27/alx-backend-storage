@@ -17,7 +17,7 @@ def call_history(method: Callable) -> Callable:
         res = method(self, *args, **kwargs)
         self._redis.rpush(outputs, str(res))
         return res
-    retur wrapper
+    return wrapper
 
 
 def count_calls(method: Callable) -> Callable:
