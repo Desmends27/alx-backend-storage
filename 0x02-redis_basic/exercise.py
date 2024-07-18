@@ -47,7 +47,7 @@ def replay(method: Callable) -> None:
 class Cache:
     """
     _redis: private variable  to save a redis instance
-    store: method that generateds a ramdon key 
+    store: method that generateds a ramdon key
     """
 
     def __init__(self) -> None:
