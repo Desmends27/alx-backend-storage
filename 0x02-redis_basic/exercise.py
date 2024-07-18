@@ -21,7 +21,7 @@ def call_history(method: Callable) -> Callable:
 
 
 def count_calls(method: Callable) -> Callable:
-    """ Returns the function increments everytime the funcion is called"""
+    """ Returns the function increments everytime a particular funcion is called"""
     method_key = method.__qualname__
 
     @wraps(method)
