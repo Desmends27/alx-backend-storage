@@ -35,7 +35,7 @@ def replay(method: Callable) -> None:
     """ Displays the history of calls of a function"""
     method_key = method.__qualname__
     inputs, outputs = method_key + ':inputs', method_key + ':outputs'
-    redis = method.__self___._redis
+    redis = method.__self__._redis
     method_count = redis.get(method_key).decode('utf-8')
     print(f'{method_key} was called {method_count} times:')
     IOTuple = zip(redis.lrange(inputs, 0, -1), redis.lrange(outputs, 0, -1))
