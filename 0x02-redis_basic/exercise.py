@@ -19,5 +19,5 @@ class Cache:
     def store(self, data: Union[int, str, bytes, float]) -> str:
         """ Stores a data in the database"""
         key = str(uuid.uuid4())
-        self._redis.mset(key, data)
+        self._redis.set(key, data)
         return key
